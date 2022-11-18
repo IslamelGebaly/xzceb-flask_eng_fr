@@ -17,21 +17,21 @@ authenticator = IAMAuthenticator(apikey=apikey)
 translator_instance = LanguageTranslatorV3(version='2018-05-01', authenticator=authenticator)
 translator_instance.set_service_url(url)
 
-def englishToFrench(englishText):
+def englishToFrench(english_text):
     '''
     function for translating english to french
     '''
-    if englishText is not None:
-        french_text = translator_instance.translate(text=englishText, model_id="en-fr").get_result()
+    if english_text is not None:
+        french_text = translator_instance.translate(text=english_text, model_id="en-fr").get_result()
         return [line['translation'] for line in french_text["translations"][:]]
     return None
 
-def frenchToEnglish(frenchText):
+def frenchToEnglish(french_text):
     '''
     function for translating french to english
     '''
-    if frenchText is not None:
-        english_text = translator_instance.translate(text=frenchText, model_id="fr-en").get_result()
+    if french_text is not None:
+        english_text = translator_instance.translate(text=french_text, model_id="fr-en").get_result()
         return [line['translation'] for line in english_text["translations"][:]]
     return None
 
